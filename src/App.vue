@@ -18,6 +18,8 @@ export default{
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
