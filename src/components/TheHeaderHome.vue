@@ -16,6 +16,32 @@
                     </div>
                 </div>
             </div>
+
+            <!-- jumbotron -->
+            <div class="row py-3 mb-4">
+                <div class="col-12">
+                    <div class="carousel-container rounded-3">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner position-relative">
+                                <div class="carousel-item active">
+                                    <img src="/Firenze.jpg" class="d-block w-100 h-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Roma.jpg" class="d-block w-100 h-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/Milano.jpg" class="d-block w-100 h-100" alt="...">
+                                </div>
+
+                                <div class="position-absolute text-jumbo text-center">
+                                    <h1 class="mb-2">Non sai dove andare?</h1>
+                                    <button class="btn my-btn-orange rounded-5 px-3 py-2">Scroprilo ora</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -37,6 +63,22 @@
             outline: 0;
             box-shadow: 0 0 0 0 white !important;
         }
+    }
+}
+
+.carousel-container{
+    overflow: hidden;
+}
+
+.text-jumbo{
+    transform: translate(-50%,-50%);
+    top: 60%;
+    left: 50%;
+    color: white;
+    font-weight: 800;
+
+    h1 {
+        font-size: 50px;
     }
 }
 </style>
