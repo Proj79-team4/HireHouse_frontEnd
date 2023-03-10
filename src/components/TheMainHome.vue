@@ -5,14 +5,16 @@
             <!-- consigliati -->
             <h2 class="pb-3">I nostri consigliati</h2>
             <div class="row row-cols-1 row-cols-md-4 gy-3">
-                <div class="col" v-for="n in 4">
+                <div class="col" v-for="apartment in this.apartmentsSponsorized">
                     <div class="card p-0 positision-relative" style="">
-                        <img src="/Firenze.jpg" class="card-img-top" alt="...">
+
+                        <!-- Inserire come primo parametro il proprio URL del BackEnd ! -->
+                        <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img " class="card-img-top" alt="...">
 
                         <div class="card-body" :style="{ 'background-color': randomColor() }">
-                            <h5 class="card-title">Localitá</h5>
-                            <div class="card-subtitle">Nome Appartamento</div>
-                            <p class="card-text text-end pt-5">€99,00 notte</p>
+                            <h5 class="card-title">{{apartment.full_address}}</h5>
+                            <div class="card-subtitle">{{apartment.title}}</div>
+                            <p class="card-text text-end pt-5">€{{apartment.price}} notte</p>
                         </div>
                     </div>
                 </div>
@@ -121,6 +123,8 @@
 </template>
 
 <script>
+import axios from "axios"; 
+
 export default {
     data() {
         return {
@@ -129,11 +133,12 @@ export default {
                 "#B5E2FA",
                 "#EDDEA4",
                 "#F7A072"
-            ]
+            ],
+            apartmentsSponsorized:[]
         }
     },
     beforeMount() {
-
+        this.fetchSponsorized()
     },
     methods: {
         getRandomItem(arr) {
@@ -148,6 +153,14 @@ export default {
 
         randomColor() {
             return this.getRandomItem(this.paletteColor);
+        },
+
+        // Funzione che recupera la lista di appartamenti sponsorizzati
+        fetchSponsorized(){
+            axios.get("http://127.0.0.1:8000/api/apartments/sponsorized")
+                .then((respone)=>{
+                    this.apartmentsSponsorized = respone.data;
+                })
         }
     },
 }
