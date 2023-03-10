@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomePage from "./pages/Home.vue";
+import ApartmentIndex from "./pages/Apartments/Index.vue";
 
 // ... import di altri componenti
 
@@ -12,6 +13,11 @@ const router = createRouter({
       path: "/", // uri da scrivere nel browser
       name: "home", // nome della rotta da usare per creare un link
       component: HomePage // componente che ritorna l'html della pagina
+    },
+    {
+      path: '/apartments',
+      name: 'apartments.index',
+      component: ApartmentIndex
     },
         // ... altre rotte
     // {
