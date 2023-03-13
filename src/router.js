@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import HomePage from "./pages/Home.vue";
 import ApartmentIndex from "./pages/Apartments/Index.vue";
+import ApartmentShow from './pages/Apartments/Show.vue';
 
 // ... import di altri componenti
 
@@ -19,13 +20,12 @@ const router = createRouter({
       name: 'apartments.index',
       component: ApartmentIndex
     },
-        // ... altre rotte
-    // {
-    //   // Show di un singolo post
-    //   path: "/posts/:id",
-    //   name: "posts.show",
-    //   component: PostsShowPage
-    // }
+    {
+      path: '/apartments/:id',
+      name: 'apartments.show',
+      component: ApartmentShow
+    },
+
   ]
 });
 

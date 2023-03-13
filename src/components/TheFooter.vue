@@ -1,9 +1,9 @@
 <template>
     <footer class="">
-        <div class="container py-5">
+        <div class="container pt-5 pb-3">
 
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
+                <div class="col col-lg-4">
                     <h6>Support</h6>
                     <ul class="list-unstyled mb-0 destinazione">
                         <li class="mb-2">
@@ -20,7 +20,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col col-lg-4 mb-4">
                     <h6>Host</h6>
                     <ul class="list-unstyled mb-0 destinazione">
                         <li class="mb-2">
@@ -37,7 +37,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col col-lg-4 mb-4">
                     <h6>About</h6>
                     <ul class="list-unstyled mb-0 destinazione">
                         <li class="mb-2">
@@ -65,7 +65,7 @@
                         <!-- Copyright -->
                         <div class="p-3">
                             © 2020 Copyright:
-                            <a class="text-dark" href="#">HireHoouse</a>
+                            <router-link :to="{name:'home'}" class="text-dark">HireHouse</router-link>
                         </div>
                     </div>
 
@@ -93,7 +93,7 @@
 </script>
 
 <style scoped lang="scss">
-@use "../styles/partiarls/variables";
+@use "../styles/partials/variables";
 
 footer {
     background-color: #F9F7F3;

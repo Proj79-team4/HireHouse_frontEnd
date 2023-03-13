@@ -1,7 +1,7 @@
 <template>
     <div class="container py-4">
         <div class="row align-items-center gy-3">
-            <div class="col-3">
+            <div class="col-12 col-sm-8 col-md-5 col-lg-4">
                 <div
                     class="input-group searchbar py-2 px-3 rounded-5 align-items-center shadow d-flex justify-content-between">
                     <div class="px-2">
@@ -79,7 +79,7 @@
 <script></script>
 
 <style scoped lang="scss">
-@use '../../styles/partiarls/variables';
+@use '../../styles/partials/variables';
 
 .searchbar {
     background-color: white;
