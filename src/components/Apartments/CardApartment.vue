@@ -1,36 +1,42 @@
 <template>
-    <!-- <router-link :to="{name: 'apartments.show', params: {id:apartment.id}}" class="card-title h5 mb-4">
-            {{ project.title }}
-        </router-link> -->
-    <a class="card rounded-4">
-        <div class="row no-gutters py-3 border-top">
-            <div class="col-12 col-sm-5">
-                <img src="/Milano.jpg" class="img-fluid h-100 w-100 rounded-4" alt="">
-            </div>
-            <div class="col">
-                <div class="card-block pt-2">
-                    <h6 class="card-subtitle mb-2 text-muted">Indirizzo completo</h6>
-                    <h5 class="card-title text-dark">Nome Appartamento</h5>
-                    <div class="line"></div>
-                    <div class="text-dark"><small>3 Stanze · 3 Letti · 3 Bagni · 145 m²</small></div>
-                    <div class="line"></div>
-                    <div class="text-dark">86 Visite</div>
-                    <div class="text-dark text-end pt-3"><strong>€ 70,00</strong> /notte</div>
+    <router-link :to="{name: 'apartments.show', params: {id:apartment.id}}" class="card-title h5 mb-4 text-decoration-none">
+            
+            <div class="card rounded-4" >
+                <div class="row no-gutters py-3 border-top">
+                    <div class="col-12 col-sm-5">
+                        <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img"
+                            class="img-fluid h-100 w-100 rounded-4" alt="">
+                    </div>
+                    <div class="col">
+                        <div class="card-block pt-2">
+                            <h6 class="card-subtitle mb-2 text-muted">{{ apartment.full_address }}</h6>
+                            <h5 class="card-title text-dark">{{ apartment.title }}</h5>
+                            <div class="line"></div>
+                            <div class="text-dark"><small>{{ apartment.num_rooms }} Stanze · {{ apartment.num_beds }} Letti · {{
+                                apartment.num_bathrooms }} Bagni · {{ apartment.square_meters }} m²</small></div>
+                            <div class="line"></div>
+                            <div class="text-dark"><small>Servizi:</small>
+                                <span v-for="(service, i) in apartment.services " :key="i - apartment" class="text-dark p-2"><i
+                                        :class="'fa-solid ' + service.icon"></i></span>
+                            </div>
+                            <div class="text-dark text-end pt-3"><strong>€ {{ apartment.price }}</strong> /notte</div>
+        
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </a>
+        </router-link>
 </template>
 
 <script>
-export default{
-    // props: {
-    //     apartment: {
-    //         type:Object,
-    //         required: true,
-    //         default: ()=>({})
-    //     }
-    // },
+export default {
+    props: {
+        apartment: {
+            type: Object,
+            required: true,
+            default: () => ({})
+        }
+    },
 }
 </script>
 
@@ -45,5 +51,4 @@ export default{
         width: 3rem;
         margin: 1rem 0;
     }
-}
-</style>
+}</style>

@@ -7,9 +7,9 @@
     <section class="container apartments-list">
         <div class="row">
             <!-- v-for="(apartment, i) in apartments" :key="i" -->
-            <div class="col-12 col-sm-7" v-for="n in 10">
+            <div class="col-12 col-sm-7" v-for="(apartment,i) in apartments" :key="i">
                 <!-- Aggiungere :apartment="apartment"-->
-                <CardApartment></CardApartment>
+                <CardApartment :apartment="apartment"></CardApartment>
             </div>
             <div class="col-12 col-sm-5"></div>
         </div>
@@ -20,15 +20,28 @@
 import TheNavbar from '../../components/Apartments/TheNavbar.vue';
 import TheSearchbar from "../../components/Apartments/TheSearchbar.vue";
 import CardApartment from '../../components/Apartments/CardApartment.vue';
+import axios from "axios"; 
 
 export default {
     name: 'ApartmentIndex',
     components: { TheNavbar, TheSearchbar, CardApartment },
     data() {
         return {
-            //apartments: []
+            apartments: []
         }
     },
+    methods:{
+        fetchIndexApartments(){
+            axios.get("http://127.0.0.1:8000/api/apartments/index")
+            .then((resp)=>{
+                this.apartments=resp.data
+            })
+
+        }
+    },
+    beforeMount(){
+        this.fetchIndexApartments();
+    }
 }
 </script>
 

@@ -6,10 +6,10 @@
             <h2 class="pb-3">I nostri consigliati</h2>
             <div class="row row-cols-1 row-cols-md-4 gy-3">
                 <div class="col" v-for="apartment in this.apartmentsSponsorized">
-                    <div class="card p-0 positision-relative" style="">
+                    <div class="card p-0 positision-relative h-100" style="">
 
                         <!-- Inserire come primo parametro il proprio URL del BackEnd ! -->
-                        <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img " class="card-img-top" alt="...">
+                        <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img " class="card-img-top h-50" alt="...">
 
                         <div class="card-body" :style="{ 'background-color': randomColor() }">
                             <h5 class="card-title">{{apartment.full_address}}</h5>

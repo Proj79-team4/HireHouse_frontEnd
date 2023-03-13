@@ -7,11 +7,15 @@
                     <div class="input-group mb-3 searchbar px-3 py-2 rounded-5 align-items-center">
                         <div class="d-flex flex-column flex-fill px-2">
                             <h6 class="mb-0"><small>Localitá</small></h6>
-                            <input type="text" class="form-control input-text" placeholder="Inserisci la tua prossima meta" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control input-text" placeholder="Inserisci la tua prossima meta"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" >
                         </div>
 
                         <div class="input-group-append ps-2">
-                            <button class="btn my-btn-orange rounded-circle" type="button"><i class="fa fa-search"></i></button>
+                            <router-link :to="{ name: 'apartments.index' }">
+                                <button class="btn my-btn-orange rounded-circle" type="button"><i
+                                        class="fa fa-search"></i></button>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -35,7 +39,8 @@
 
                                 <div class="position-absolute text-jumbo text-center">
                                     <h1 class="mb-2">Non sai dove andare?</h1>
-                                    <router-link :to="{name: 'apartments.index'}" class="btn my-btn-orange rounded-5 px-3 py-2">Scroprilo ora</router-link>
+                                    <router-link :to="{ name: 'apartments.index' }"
+                                        class="btn my-btn-orange rounded-5 px-3 py-2">Scroprilo ora</router-link>
                                 </div>
                             </div>
                         </div>
@@ -46,32 +51,35 @@
     </section>
 </template>
 
-<script></script>
+<script>
+
+</script>
 
 <style scoped lang="scss">
 @use '../styles/partials/variables';
+
 .searchbar {
     width: 70%;
     background-color: white;
 
-    .form-control{
+    .form-control {
         border: 0;
         padding: 0;
 
         &:focus {
-            border-color: transparent; 
+            border-color: transparent;
             outline: 0;
             box-shadow: 0 0 0 0 white !important;
         }
     }
 }
 
-.carousel-container{
+.carousel-container {
     overflow: hidden;
 }
 
-.text-jumbo{
-    transform: translate(-50%,-50%);
+.text-jumbo {
+    transform: translate(-50%, -50%);
     top: 60%;
     left: 50%;
     color: white;
@@ -80,5 +88,4 @@
     h1 {
         font-size: 50px;
     }
-}
-</style>
+}</style>

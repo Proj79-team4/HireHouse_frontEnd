@@ -4,11 +4,11 @@
     <main class="container">
         <!-- jumbotron -->
         <section class="py-4">
-            <h2>Titolo Appartamento</h2>
-            <div><span class="">8 Views</span> · <span class="text-muted">Indirizzio completo</span></div>
+            <h2>{{ apartment.title }}</h2>
+            <div> <span class="text-muted">{{ apartment.full_address }}</span></div>
 
             <div class="apartment-image">
-                <img src="/Firenze.jpg" class="rounded-4">
+                <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img" class="rounded-4">
             </div>
         </section>
 
@@ -18,20 +18,20 @@
                 <section>
                     <div class="row border-bottom pb-3">
                         <div class="col-9">
-                            <h4>Host: Mario Rossi</h4>
-                            <div class="fw-bold"><small>3 Stanze · 3 Letti · 3 Bagni · 145 m²</small></div>
+                            <h4>Host: {{ apartment.user.name +" "+ apartment.user.surname }}</h4>
+                            <div class="fw-bold"><small>{{ apartment.num_rooms }} Stanze · {{ apartment.num_beds }} Letti · {{
+                                apartment.num_bathrooms }} Bagni · {{ apartment.square_meters }} m²</small></div>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
                             <div class="host-img">
-                                <img src="/Roma.jpg" class="" alt="">
+                                <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.user.profile_image" class="img-fluid" alt="">
                             </div>
                         </div>
                     </div>
 
-                    <p class="lead py-4 border-bottom m-0">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, iure architecto expedita ipsa
-                        blanditiis sit quibusdam dolorum eum repellendus aliquid qui vitae nulla unde commodi hic dicta ad
-                        quasi nemo.
+
+                    <p class="lead py-4 border-bottom m-0" v-if="apartment.description">
+                        {{ apartment.description }}
                     </p>
 
                     <div class="row pb-3 border-bottom">
@@ -39,9 +39,9 @@
                             <!-- servizi -->
                             <div class="py-3">
                                 <h5 class="py-3">Servizi appartamento</h5>
-                                <div v-for="n in 5" class="py-1 px-4">
-                                    <i class="fa-solid fa-star"></i>
-                                    <span class="ps-3">Servizio</span>
+                                <div v-for="(service,i) in apartment.services" class="py-1 px-4">
+                                    <i :class="'fa-solid ' + service.icon  "></i>
+                                    <span class="ps-3">{{ service.name }}</span>
                                 </div>
                             </div>
                         </div>
@@ -49,9 +49,9 @@
                             <!-- Regole -->
                             <div class="py-3">
                                 <h5 class="py-3">Regole appartamento</h5>
-                                <div v-for="n in 5" class="py-1 px-4">
-                                    <i class="fa-solid fa-gear"></i>
-                                    <span class="ps-3">Regola</span>
+                                <div v-for="(rule,i) in apartment.rules" class="py-1 px-4">
+                                    <i :class="'fa-solid ' + rule.icon  "></i>
+                                    <span class="ps-3">{{ rule.name }}</span>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
             <!-- form messaggi -->
             <div class="col-12 col-lg-4 py-4">
                 <div class="shadow p-3 rounded-4">
-                    <h5 class="text-center py-3">€80,00 /notte</h5>
+                    <h5 class="text-center py-3">€{{ apartment.price }} /notte</h5>
                     <form action="" method="">
                         <div class="pt-2 px-3 border rounded-top">
                             <label for="exampleFormControlInput1" class="fw-bold"><small>NOME</small></label>
@@ -98,10 +98,29 @@
 <script>
 import TheNavbar from '../../components/Apartments/TheNavbar.vue';
 import TheFooter from '../../components/TheFooter.vue';
+import axios from "axios"; 
 
 export default {
     name: 'ApartmentShow',
-    components: { TheNavbar, TheFooter }
+    components: { TheNavbar, TheFooter },
+    data() {
+        return {
+            apartment: null
+        }
+    },
+    methods:{
+        fetchIndexApartments(){
+            axios.get("http://127.0.0.1:8000/api/apartments/show/"+this.$route.params.id)
+            .then((resp)=>{
+                this.apartment=resp.data
+            })
+
+        }
+    },
+    beforeMount(){
+        this.fetchIndexApartments();
+    }
+
 }
 </script>
 
