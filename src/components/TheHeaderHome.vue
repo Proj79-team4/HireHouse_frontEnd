@@ -35,7 +35,7 @@
 
                                 <div class="position-absolute text-jumbo text-center">
                                     <h1 class="mb-2">Non sai dove andare?</h1>
-                                    <button class="btn my-btn-orange rounded-5 px-3 py-2">Scroprilo ora</button>
+                                    <router-link :to="{name: 'apartments.index'}" class="btn my-btn-orange rounded-5 px-3 py-2">Scroprilo ora</router-link>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
 <script></script>
 
 <style scoped lang="scss">
-@use '../styles/partiarls/variables';
+@use '../styles/partials/variables';
 .searchbar {
     width: 70%;
     background-color: white;
