@@ -6,7 +6,7 @@
                     class="input-group searchbar py-2 px-3 rounded-5 align-items-center shadow d-flex justify-content-between">
                     <div class="px-2">
                         <input type="text" class="form-control input-text" placeholder="Cittá"
-                            aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="address">
+                            aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="address" >
                     </div>
 
                     <button class="btn my-btn-orange rounded-circle" type="button"><i class="fa fa-search"></i></button>
@@ -79,7 +79,7 @@ export default {
     data() {
         return {
             store,
-            address: "",
+            address: store.city,
             form: {
                 price: "",
                 num_rooms: "",
@@ -93,8 +93,10 @@ export default {
 
         }
     },
-    beforeMount() {
-
+    mounted(){
+        if(this.address != ""){
+            this.fetchApartments();
+        }
     },
     methods: {
         fetchApartments() {

@@ -8,12 +8,12 @@
                         <div class="d-flex flex-column flex-fill px-2">
                             <h6 class="mb-0"><small>Localitá</small></h6>
                             <input type="text" class="form-control input-text" placeholder="Inserisci la tua prossima meta"
-                                aria-label="Recipient's username" aria-describedby="basic-addon2" >
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="city">
                         </div>
 
                         <div class="input-group-append ps-2">
                             <router-link :to="{ name: 'apartments.index' }">
-                                <button class="btn my-btn-orange rounded-circle" type="button"><i
+                                <button class="btn my-btn-orange rounded-circle" type="button" @click="saveCity()"><i
                                         class="fa fa-search"></i></button>
                             </router-link>
                         </div>
@@ -52,6 +52,29 @@
 </template>
 
 <script>
+
+
+import {store} from "../store"
+export default {
+    data() {
+        return {
+            store,
+            city:""
+            
+    
+    }},
+   
+    methods: {
+        saveCity(){
+           store.city=this.city;
+        }
+       
+    }
+
+}
+
+
+
 
 </script>
 

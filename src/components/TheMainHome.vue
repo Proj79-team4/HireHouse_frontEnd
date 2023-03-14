@@ -11,6 +11,9 @@
 
                             <!-- Inserire come primo parametro il proprio URL del BackEnd ! -->
                             <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img " class="card-img-top h-50" alt="...">
+                            <div class="position-absolute top-0 pt-2 ps-1 translate-middle" v-if="apartment.sponsors.length > 0">
+                                <i class="fa-solid fa-star p-1 star"></i>
+                            </div>
 
                             <div class="card-body" :style="{ 'background-color': randomColor() }">
                                 <h5 class="card-title">{{apartment.title}}</h5>
@@ -198,5 +201,10 @@ export default {
         margin: 0;
     }
 
+}
+.star{
+    color:#ee722f;
+    font-size: 25px;
+    
 }
 </style>

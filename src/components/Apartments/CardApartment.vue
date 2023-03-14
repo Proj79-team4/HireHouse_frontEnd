@@ -3,9 +3,12 @@
             
             <div class="card rounded-4" >
                 <div class="row no-gutters py-3 border-top">
-                    <div class="col-12 col-sm-5">
+                    <div class="col-12 col-sm-5 position-relative">
                         <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img"
                             class="img-fluid h-100 w-100 rounded-4" alt="">
+                            <div class="position-absolute top-0 pt-2 ps-1 translate-middle" v-if="apartment.sponsors.length > 0">
+                                <i class="fa-solid fa-star p-1 star"></i>
+                            </div>
                     </div>
                     <div class="col">
                         <div class="card-block pt-2">
@@ -41,6 +44,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .card {
     border: none;
     text-decoration: none;
@@ -51,4 +55,11 @@ export default {
         width: 3rem;
         margin: 1rem 0;
     }
-}</style>
+}
+.star{
+    color:#ee722f;
+    font-size: 25px;
+    
+}
+
+</style>
