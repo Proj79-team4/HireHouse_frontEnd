@@ -16,67 +16,74 @@
             <div class="col">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
                     <label for=""><small>Prezzo</small></label>
-                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example">
+                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example" v-model="form.price" >
                         <option disabled selected>-</option>
-                        <option value="1">0 - 50€</option>
-                        <option value="2">50€ - 100€</option>
-                        <option value="3"> > 100€</option>
+                        <option value="50"> &lt 50€</option>
+                        <option value="100"> &lt 100€</option>
+                        <option value="150"> 150€ </option>
                     </select>
                 </div>
             </div>
 
             <div class="col">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for=""><small>Stanze</small></label>
-                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example">
-                        <option disabled selected>-</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <label for="" placeholder=""><small>Stanze</small> : </label>
+                    <input  type="number" class="my-select-control" aria-label=".form-select-sm example" v-model="form.num_rooms">               
                 </div>
             </div>
 
             <div class="col">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for=""><small>Bagni</small></label>
-                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example">
-                        <option disabled selected>-</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <label for=""><small>Bagni</small> : </label>
+                    <input  type="number" class="my-select-control" aria-label=".form-select-sm example" v-model="form.num_bathrooms">
+                  
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-3">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for=""><small>Letti</small></label>
-                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example">
-                        <option disabled selected>-</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <label for=""><small>Letti</small> : </label>
+                    <input  type="number" class="my-select-control" aria-label=".form-select-sm example" v-model="form.num_beds">
+                
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-3">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for=""><small>m²</small></label>
-                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example">
-                        <option disabled selected>-</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                    <label for=""><small>m²</small> : </label>
+                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"  v-model="form.square_meters">
                 </div>
+            </div>
+            
+            <div class="col-3">
+                <button class="btn btn-dark">Cerca</button>
             </div>
         </div>
     </div>
 </template>
 
-<script></script>
+<script>
+export default {
+    data() {
+        return {
+            form:{
+                price:"",
+                num_rooms:"",
+                num_bathrooms:"",
+                num_beds:"",
+                square_meters:"",
+                lat:"",
+                long:""
+            }
+            
+        }
+    },
+    beforeMount() {
+       
+    },
+   
+}
+</script>
 
 <style scoped lang="scss">
 @use '../../styles/partials/variables';

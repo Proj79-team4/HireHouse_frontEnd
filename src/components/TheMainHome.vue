@@ -6,17 +6,19 @@
             <h2 class="pb-3">I nostri consigliati</h2>
             <div class="row row-cols-1 row-cols-md-4 gy-3">
                 <div class="col" v-for="apartment in this.apartmentsSponsorized">
-                    <div class="card p-0 positision-relative h-100" style="">
+                    <router-link :to="{name: 'apartments.show', params: {id:apartment.id}}" class="text-decoration-none text-dark">
+                        <div class="card p-0 positision-relative h-100" style="">
 
-                        <!-- Inserire come primo parametro il proprio URL del BackEnd ! -->
-                        <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img " class="card-img-top h-50" alt="...">
+                            <!-- Inserire come primo parametro il proprio URL del BackEnd ! -->
+                            <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img " class="card-img-top h-50" alt="...">
 
-                        <div class="card-body" :style="{ 'background-color': randomColor() }">
-                            <h5 class="card-title">{{apartment.full_address}}</h5>
-                            <div class="card-subtitle">{{apartment.title}}</div>
-                            <p class="card-text text-end pt-5">€{{apartment.price}} notte</p>
+                            <div class="card-body" :style="{ 'background-color': randomColor() }">
+                                <h5 class="card-title">{{apartment.title}}</h5>
+                                <div class="card-subtitle">{{apartment.full_address}}</div>
+                                <p class="card-text text-end pt-5">€{{apartment.price}} notte</p>
+                            </div>
                         </div>
-                    </div>
+                    </router-link >
                 </div>
             </div>
 
@@ -26,7 +28,7 @@
 
                 <div class="position-absolute host-text">
                     <h2>Diventa <br> anche tu <br> un host</h2>
-                    <a class="btn my-btn-turchese mt-4">Registrati</a>
+                    <a href="http://127.0.0.1:8000/" class="btn my-btn-turchese mt-4">Registrati</a>
                 </div>
             </div>
 

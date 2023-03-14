@@ -16,7 +16,7 @@
                                 apartment.num_bathrooms }} Bagni · {{ apartment.square_meters }} m²</small></div>
                             <div class="line"></div>
                             <div class="text-dark"><small>Servizi:</small>
-                                <span v-for="(service, i) in apartment.services " :key="i - apartment" class="text-dark p-2"><i
+                                <span v-for="(service, i) in apartment.services " :key="i" class="text-dark p-2"><i
                                         :class="'fa-solid ' + service.icon"></i></span>
                             </div>
                             <div class="text-dark text-end pt-3"><strong>€ {{ apartment.price }}</strong> /notte</div>

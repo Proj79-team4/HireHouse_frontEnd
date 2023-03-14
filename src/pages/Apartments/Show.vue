@@ -3,7 +3,7 @@
 
     <main class="container">
         <!-- jumbotron -->
-        <section class="py-4">
+        <section class="py-4" v-if="apartment != null">
             <h2>{{ apartment.title }}</h2>
             <div> <span class="text-muted">{{ apartment.full_address }}</span></div>
 
@@ -12,7 +12,7 @@
             </div>
         </section>
 
-        <div class="row">
+        <div class="row "  v-if="apartment != null">
             <!-- informazioni appartamento -->
             <div class="col-12 col-lg-8 pe-5">
                 <section>
