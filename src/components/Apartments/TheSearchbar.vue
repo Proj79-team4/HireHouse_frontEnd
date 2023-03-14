@@ -74,9 +74,11 @@
 
 <script>
 import axios from "axios";
+import {store} from "../../store"
 export default {
     data() {
         return {
+            store,
             address: "",
             form: {
                 price: "",
@@ -105,8 +107,13 @@ export default {
                     //chiamata axios per recuperare gli appartmaenti con i fltri
                     axios.get("http://127.0.0.1:8000/api/apartments/research", { params: this.form })
                         .then((resp) => {
-                            console.log(resp.data)
-                            //da fare emit
+                            
+                            store.searchedApartment=resp.data
+                            this.$emit("searchApartments");
+                            
+
+                           
+
 
                         })
 

@@ -1,7 +1,7 @@
 <template>
     <TheNavbar></TheNavbar>
 
-    <TheSearchbar></TheSearchbar>
+    <TheSearchbar @searchApartments="saveApartments()"></TheSearchbar>
 
     <!-- lista appartamenti -->
     <section class="container apartments-list">
@@ -21,12 +21,14 @@ import TheNavbar from '../../components/Apartments/TheNavbar.vue';
 import TheSearchbar from "../../components/Apartments/TheSearchbar.vue";
 import CardApartment from '../../components/Apartments/CardApartment.vue';
 import axios from "axios"; 
+import {store} from "../../store"
 
 export default {
     name: 'ApartmentIndex',
     components: { TheNavbar, TheSearchbar, CardApartment },
     data() {
         return {
+            store,
             apartments: []
         }
     },
@@ -36,6 +38,10 @@ export default {
             .then((resp)=>{
                 this.apartments=resp.data
             })
+
+        },
+        saveApartments(){
+            this.apartments=this.store.searchedApartment;
 
         }
     },
