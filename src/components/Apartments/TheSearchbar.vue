@@ -6,7 +6,7 @@
                     class="input-group searchbar py-2 px-3 rounded-5 align-items-center shadow d-flex justify-content-between">
                     <div class="px-2">
                         <input type="text" class="form-control input-text" placeholder="Cittá"
-                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="address">
                     </div>
 
                     <button class="btn my-btn-orange rounded-circle" type="button"><i class="fa fa-search"></i></button>
@@ -16,7 +16,8 @@
             <div class="col">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
                     <label for=""><small>Prezzo</small></label>
-                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example" v-model="form.price" >
+                    <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example"
+                        v-model="form.price">
                         <option disabled selected>-</option>
                         <option value="50"> &lt 50€</option>
                         <option value="100"> &lt 100€</option>
@@ -28,61 +29,99 @@
             <div class="col">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
                     <label for="" placeholder=""><small>Stanze</small> : </label>
-                    <input  type="number" class="my-select-control" aria-label=".form-select-sm example" v-model="form.num_rooms">               
+                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+                        v-model="form.num_rooms">
                 </div>
             </div>
 
             <div class="col">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
                     <label for=""><small>Bagni</small> : </label>
-                    <input  type="number" class="my-select-control" aria-label=".form-select-sm example" v-model="form.num_bathrooms">
-                  
+                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+                        v-model="form.num_bathrooms">
+
                 </div>
             </div>
 
             <div class="col-3">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
                     <label for=""><small>Letti</small> : </label>
-                    <input  type="number" class="my-select-control" aria-label=".form-select-sm example" v-model="form.num_beds">
-                
+                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+                        v-model="form.num_beds">
+
                 </div>
             </div>
 
             <div class="col-3">
                 <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
                     <label for=""><small>m²</small> : </label>
-                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"  v-model="form.square_meters">
+                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+                        v-model="form.square_meters">
                 </div>
             </div>
-            
+            <div class="col-3 mt-3 pt-4 ps-5">
+
+                <input id="pi_input" type="range" min="0" max="500" step="5" v-model="form.dist"/>
+                <p>Distanza: <output id="value">{{ form.dist }} km</output></p>
+            </div>
+
             <div class="col-3">
-                <button class="btn btn-dark">Cerca</button>
+                <button class="btn btn-dark" @click="fetchApartments()">Cerca</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
     data() {
         return {
-            form:{
-                price:"",
-                num_rooms:"",
-                num_bathrooms:"",
-                num_beds:"",
-                square_meters:"",
-                lat:"",
-                long:""
+            address: "",
+            form: {
+                price: "",
+                num_rooms: "",
+                num_bathrooms: "",
+                num_beds: "",
+                square_meters: "",
+                lat: "",
+                lng: "",
+                dist: 20,
             }
-            
+
         }
     },
     beforeMount() {
-       
+
     },
-   
+    methods: {
+        fetchApartments() {
+            axios.get("https://api.tomtom.com/search/2/geocode/" + this.address + ".json?key=6hakT8QU7IRSx9PCHGi5JyHTV2S7xWlD")
+                .then((resp) => {
+                    this.form.lat = resp.data.results[0].position.lat
+                    this.form.lng = resp.data.results[0].position.lon
+
+
+                    //chiamata axios per recuperare gli appartmaenti con i fltri
+                    axios.get("http://127.0.0.1:8000/api/apartments/research", { params: this.form })
+                        .then((resp) => {
+                            console.log(resp.data)
+                            //da fare emit
+
+                        })
+
+                }
+
+                )
+
+
+
+        }
+    }
+
 }
+
+
 </script>
 
 <style scoped lang="scss">
@@ -103,13 +142,13 @@ export default {
     }
 }
 
-.my-select-control{
+.my-select-control {
     border: none;
 
     &:focus {
-            border-color: transparent;
-            outline: 0;
-            box-shadow: 0 0 0 0 white !important;
-        }
+        border-color: transparent;
+        outline: 0;
+        box-shadow: 0 0 0 0 white !important;
+    }
 }
 </style>
