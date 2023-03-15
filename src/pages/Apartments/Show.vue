@@ -63,7 +63,7 @@
                 <section>
                     <div class="py-3">
                         <h4 class="py-3">Posizione</h4>
-                        <TheMapMarker></TheMapMarker>
+                        <TheMapMarker :apartment="apartment"></TheMapMarker>
                     </div>
                 </section>
             </div>
@@ -119,7 +119,7 @@ export default {
 
         }
     },
-    beforeMount(){
+    created(){
         this.fetchIndexApartments();
     }
 

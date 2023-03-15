@@ -1,38 +1,47 @@
 <template>
-    <div >
-        <div id='map' ref="mapRef"></div>
-    </div>
+  <div>
+    <div id='map' ref="mapRef"></div>
+  </div>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'; 
-export default { 
-  name: 'Map', 
-  setup() { 
-    const mapRef = ref(null); 
-    onMounted(() => { 
-       
-            const tt = window.tt; 
-            var map = tt.map({ 
-            key: '6hakT8QU7IRSx9PCHGi5JyHTV2S7xWlD', 
-            container: mapRef.value, 
-            style: 'tomtom://vector/1/basic-main', 
-        }); 
-        map.addControl(new tt.FullscreenControl()); 
-        map.addControl(new tt.NavigationControl());  
-    }) 
- 
-    return { 
-      mapRef, 
-    }; 
-  }  
+export default {
+  name: 'Map',
+  props: {
+    apartment: Object
+  },
+  data() {
+    return {
+
+    }
+  },
+  mounted() {
+    var map = tt.map({
+      key: '6hakT8QU7IRSx9PCHGi5JyHTV2S7xWlD',
+      container: 'map',
+      center: [this.apartment.longitude, this.apartment.latitude],
+      zoom: 13
+    });
+
+    this.addMarker(map);
+  },
+  methods: {
+    addMarker(map) {
+      const tt = window.tt;
+      var location = [this.apartment.longitude, this.apartment.latitude];
+      var popupOffset = 25;
+
+      var marker = new tt.Marker().setLngLat(location).addTo(map);
+      var popup = new tt.Popup({ offset: popupOffset }).setHTML(this.apartment.full_address);
+      marker.setPopup(popup).togglePopup();
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
- 
-#map { 
-    height: 50vh; 
-    width: 50vw; 
-} 
+#map {
+  height: 50vh;
+  width: 50vw;
+}
 </style>
