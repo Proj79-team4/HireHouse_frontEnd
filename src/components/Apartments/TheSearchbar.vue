@@ -65,6 +65,39 @@
                 </div>
             </div>
 
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex align-items-center">
+                    
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span id="textServices"> Servizi*</span> <span class="d-none text-danger"
+                                id="errorServices">Seleziona almeno un servizio</span>
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            
+                            <div class="form-check form-check " v-for="(service,i) in services" >
+
+                                <input class="form-check-input servicesCheck "
+                                    type="checkbox" :id="'servicesCheckbox_'+i" v-model="form.services"
+                                    :value="service.id"
+                                >
+
+                                <i :class='"fa-solid"+" "+ service.icon'></i>
+                                <label class="form-check-label" :for="'servicesCheckbox_'+i" >
+                                    {{service.name}}</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
             <div class="col-6 col-md-3 d-flex justify-content-center">
                 <button class="btn my-btn-orange rounded-pill w-50 shadow" @click="fetchApartments()">Cerca</button>
             </div>
@@ -79,6 +112,7 @@ export default {
     data() {
         return {
             store,
+            services:[],
             address: store.city,
             form: {
                 price: "",
@@ -86,6 +120,7 @@ export default {
                 num_bathrooms: "",
                 num_beds: "",
                 square_meters: "",
+                services:[],
                 lat: "",
                 lng: "",
                 dist: 20,
@@ -97,6 +132,11 @@ export default {
         if(this.address != ""){
             this.fetchApartments();
         }
+    },
+    beforeMount(){
+        this.fetchServices();
+        
+
     },
     methods: {
         fetchApartments() {
@@ -119,6 +159,15 @@ export default {
                 }
 
             )
+        },
+        fetchServices(){
+            axios.get("http://127.0.0.1:8000/api/services/index")
+                .then((resp) => {
+                    this.services=resp.data;
+                }
+
+            )
+
         }
     }
 
