@@ -63,6 +63,7 @@
                 <section>
                     <div class="py-3">
                         <h4 class="py-3">Posizione</h4>
+                        <TheMapMarker></TheMapMarker>
                     </div>
                 </section>
             </div>
@@ -98,11 +99,12 @@
 <script>
 import TheNavbar from '../../components/Apartments/TheNavbar.vue';
 import TheFooter from '../../components/TheFooter.vue';
+import TheMapMarker from "../../components/TheMapMarker.vue"
 import axios from "axios"; 
 
 export default {
     name: 'ApartmentShow',
-    components: { TheNavbar, TheFooter },
+    components: { TheNavbar, TheFooter,TheMapMarker },
     data() {
         return {
             apartment: null
