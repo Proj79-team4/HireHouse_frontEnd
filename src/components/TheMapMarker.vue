@@ -41,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 #map {
-  height: 50vh;
-  width: 50vw;
+  height: 30vh;
+  width: auto;
 }
 </style>
