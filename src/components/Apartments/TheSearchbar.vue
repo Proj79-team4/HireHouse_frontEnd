@@ -1,20 +1,18 @@
 <template>
     <div class="container py-4">
         <div class="row align-items-center gy-3">
-            <div class="col-12 col-sm-8 col-md-5 col-lg-4">
-                <div
-                    class="input-group searchbar py-2 px-3 rounded-5 align-items-center shadow d-flex justify-content-between">
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 align-items-center shadow d-flex justify-content-between">
                     <div class="px-2">
                         <input type="text" class="form-control input-text" placeholder="Cittá"
                             aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="address" >
                     </div>
-
-                    <button class="btn my-btn-orange rounded-circle" type="button"><i class="fa fa-search"></i></button>
+                    <!-- <button class="btn my-btn-orange rounded-circle" type="button"><i class="fa fa-search"></i></button> -->
                 </div>
             </div>
 
-            <div class="col">
-                <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex align-items-center">
                     <label for=""><small>Prezzo</small></label>
                     <select class="form-select form-select-sm my-select-control" aria-label=".form-select-sm example"
                         v-model="form.price">
@@ -26,47 +24,49 @@
                 </div>
             </div>
 
-            <div class="col">
-                <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for="" placeholder=""><small>Stanze</small> : </label>
-                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex align-items-center">
+                    <label for="roomInput"><small>Stanze: </small></label>
+                    <input type="number" class="form-control form-control-sm my-select-control ps-1" id="roomInput" placeholder=""
                         v-model="form.num_rooms">
                 </div>
             </div>
 
-            <div class="col">
-                <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for=""><small>Bagni</small> : </label>
-                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex align-items-center">
+                    <label for="bathInput"><small>Bagni: </small></label>
+                    <input type="number" class="form-control form-control-sm my-select-control ps-1" id="bathInput" placeholder=""
                         v-model="form.num_bathrooms">
 
                 </div>
             </div>
 
-            <div class="col-3">
-                <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for=""><small>Letti</small> : </label>
-                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex align-items-center">
+                    <label for="bedInput"><small>Letti: </small></label>
+                    <input type="number" class="form-control form-control-sm my-select-control ps-1" id="bedInput" placeholder=""
                         v-model="form.num_beds">
 
                 </div>
             </div>
 
-            <div class="col-3">
-                <div class="nput-group searchbar py-2 px-3 rounded-5 shadow d-flex">
-                    <label for=""><small>m²</small> : </label>
-                    <input type="number" class="my-select-control" aria-label=".form-select-sm example"
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex align-items-center">
+                    <label for="meterInput"><small>m²: </small></label>
+                    <input type="number" class="form-control form-control-sm my-select-control ps-1" id="meterhInput" placeholder=""
                         v-model="form.square_meters">
                 </div>
             </div>
-            <div class="col-3 mt-3 pt-4 ps-5">
 
-                <input id="pi_input" type="range" min="0" max="500" step="5" v-model="form.dist"/>
-                <p>Distanza: <output id="value">{{ form.dist }} km</output></p>
+            <div class="col-6 col-md-3">
+                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex flex-column justify-content-center">
+                    <label for="distanceInput" class="flex-fill"><small>Distanza: <output id="value">{{ form.dist }} km</output></small></label>
+                    <input id="distanceInput" type="range" min="0" max="500" step="5" class="form-range w-100" v-model="form.dist"/>
+                </div>
             </div>
 
-            <div class="col-3">
-                <button class="btn btn-dark" @click="fetchApartments()">Cerca</button>
+            <div class="col-6 col-md-3 d-flex justify-content-center">
+                <button class="btn my-btn-orange rounded-pill w-50 shadow" @click="fetchApartments()">Cerca</button>
             </div>
         </div>
     </div>
@@ -112,19 +112,13 @@ export default {
                             
                             store.searchedApartment=resp.data
                             this.$emit("searchApartments");
-                            
 
-                           
-
-
-                        })
+                        }
+                    )
 
                 }
 
-                )
-
-
-
+            )
         }
     }
 
@@ -159,5 +153,9 @@ export default {
         outline: 0;
         box-shadow: 0 0 0 0 white !important;
     }
+}
+
+input[type="range"]::-webkit-slider-thumb {
+   background-color: #F7A072;
 }
 </style>
