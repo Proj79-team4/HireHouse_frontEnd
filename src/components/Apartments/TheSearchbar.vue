@@ -140,25 +140,38 @@ export default {
     },
     methods: {
         fetchApartments() {
-            axios.get("https://api.tomtom.com/search/2/geocode/" + this.address + ".json?key=6hakT8QU7IRSx9PCHGi5JyHTV2S7xWlD")
-                .then((resp) => {
-                    this.form.lat = resp.data.results[0].position.lat
-                    this.form.lng = resp.data.results[0].position.lon
+            if(this.address!==""){
 
+                axios.get("https://api.tomtom.com/search/2/geocode/" + this.address + ".json?key=6hakT8QU7IRSx9PCHGi5JyHTV2S7xWlD")
+                    .then((resp) => {
+                        this.form.lat = resp.data.results[0].position.lat
+                        this.form.lng = resp.data.results[0].position.lon
+    
+    
+                        //chiamata axios per recuperare gli appartmaenti con i fltri
+                        axios.get("http://127.0.0.1:8000/api/apartments/research", { params: this.form })
+                            .then((resp) => {
+                                
+                                store.searchedApartment=resp.data
+                                this.$emit("searchApartments");
+    
+                            }
+                        )
+    
+                    }
+    
+                )
+            }else{
+                axios.get("http://127.0.0.1:8000/api/apartments/research", { params: this.form })
+                            .then((resp) => {
+                                
+                                store.searchedApartment=resp.data
+                                this.$emit("searchApartments");
+    
+                            }
+                        )
 
-                    //chiamata axios per recuperare gli appartmaenti con i fltri
-                    axios.get("http://127.0.0.1:8000/api/apartments/research", { params: this.form })
-                        .then((resp) => {
-                            
-                            store.searchedApartment=resp.data
-                            this.$emit("searchApartments");
-
-                        }
-                    )
-
-                }
-
-            )
+            }
         },
         fetchServices(){
             axios.get("http://127.0.0.1:8000/api/services/index")
