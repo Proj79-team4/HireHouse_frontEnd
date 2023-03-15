@@ -66,40 +66,33 @@
             </div>
 
             <div class="col-6 col-md-3">
-                <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex align-items-center">
-                    
-                    <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <span id="textServices"> Servizi*</span> <span class="d-none text-danger"
-                                id="errorServices">Seleziona almeno un servizio</span>
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            
-                            <div class="form-check form-check " v-for="(service,i) in services" >
+                <div class="accordion searchbar py-3 px-3 rounded-5 shadow d-flex align-items-center">
+                    <div class="accordion-item w-100">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <span id="textServices"><small>Servizi</small></span> 
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body p-0">
+                                <div class="form-check form-check " v-for="(service,i) in services" >
+                                    <input class="form-check-input servicesCheck "
+                                        type="checkbox" :id="'servicesCheckbox_'+i" v-model="form.services"
+                                        :value="service.id">
 
-                                <input class="form-check-input servicesCheck "
-                                    type="checkbox" :id="'servicesCheckbox_'+i" v-model="form.services"
-                                    :value="service.id"
-                                >
-
-                                <i :class='"fa-solid"+" "+ service.icon'></i>
-                                <label class="form-check-label" :for="'servicesCheckbox_'+i" >
-                                    {{service.name}}</label>
+                                    <i :class='"fa-solid"+" "+ service.icon'></i>
+                                    <label class="form-check-label" :for="'servicesCheckbox_'+i" >
+                                        {{service.name}}</label>
+                                </div>               
                             </div>
-                            
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
 
-            <div class="col-6 col-md-3 d-flex justify-content-center">
-                <button class="btn my-btn-orange rounded-pill w-50 shadow" @click="fetchApartments()">Cerca</button>
+            <div class="col-12 d-flex justify-content-center mt-4">
+                <button class="btn my-btn-orange rounded-pill w-25 shadow" @click="fetchApartments()">Cerca</button>
             </div>
         </div>
     </div>
@@ -219,5 +212,18 @@ export default {
 
 input[type="range"]::-webkit-slider-thumb {
    background-color: #F7A072;
+}
+
+.accordion {
+    --bs-accordion-color: #212529;
+    --bs-accordion-bg: #fff;
+    --bs-accordion-border-color: none;
+    --bs-accordion-border-width: none;
+    --bs-accordion-btn-padding-x: 0;
+    --bs-accordion-btn-padding-y: 0;
+    --bs-accordion-btn-focus-border-color: none;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0;
+    --bs-accordion-active-color: none;
+    --bs-accordion-active-bg: none;
 }
 </style>
