@@ -2,7 +2,7 @@
     <footer class="">
         <div class="container pt-5 pb-3">
 
-            <div class="row justify-content-center">
+            <!-- <div class="row justify-content-center">
                 <div class="col col-lg-4">
                     <h6>Support</h6>
                     <ul class="list-unstyled mb-0 destinazione">
@@ -54,7 +54,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
             <hr class="my-3">
 
@@ -64,7 +64,7 @@
                     <div class="col-md-7 col-lg-8 text-center text-md-start">
                         <!-- Copyright -->
                         <div class="p-3">
-                            © 2020 Copyright:
+                            © 2023 Copyright:
                             <router-link :to="{name:'home'}" class="text-dark">HireHouse</router-link>
                         </div>
                     </div>

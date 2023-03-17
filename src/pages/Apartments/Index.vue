@@ -7,7 +7,13 @@
     <section class="container apartments-list">
         <div class="row">
             <!-- v-for="(apartment, i) in apartments" :key="i" -->
-            <div class="col-12 col-sm-7" v-for="(apartment,i) in apartments" :key="i">
+            <!-- Messaggio di mancanza appartamenti  -->
+            <div class="mt-3" v-if="apartments.length === 0">
+                <div class="alert bg-sabbia text-center" role="alert">
+                    Non ci sono risultati per questi filtri
+                </div>
+            </div>
+            <div class="col-12 " v-for="(apartment, i) in apartments" :key="i">
                 <!-- Aggiungere :apartment="apartment"-->
                 <CardApartment :apartment="apartment"></CardApartment>
             </div>
@@ -20,8 +26,8 @@
 import TheNavbar from '../../components/Apartments/TheNavbar.vue';
 import TheSearchbar from "../../components/Apartments/TheSearchbar.vue";
 import CardApartment from '../../components/Apartments/CardApartment.vue';
-import axios from "axios"; 
-import {store} from "../../store"
+import axios from "axios";
+import { store } from "../../store"
 
 export default {
     name: 'ApartmentIndex',
@@ -32,24 +38,23 @@ export default {
             apartments: []
         }
     },
-    methods:{
-        fetchIndexApartments(){
+    methods: {
+        fetchIndexApartments() {
             axios.get("http://127.0.0.1:8000/api/apartments/index")
-            .then((resp)=>{
-                this.apartments=resp.data
-            })
+                .then((resp) => {
+                    this.apartments = resp.data
+                })
 
         },
-        saveApartments(){
-            this.apartments=this.store.searchedApartment;
+        saveApartments() {
+            this.apartments = this.store.searchedApartment;
 
         }
     },
-    beforeMount(){
+    beforeMount() {
         this.fetchIndexApartments();
     }
 }
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

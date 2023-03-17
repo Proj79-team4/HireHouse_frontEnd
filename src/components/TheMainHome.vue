@@ -44,84 +44,117 @@
 
                 <h3 class="pb-4">Principali destinazioni</h3>
 
+                
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
-                        <ul class="list-unstyled mb-0 destinazione">
+                        <ul class="list-unstyled  mb-0 destinazione">
                             <li class="mb-3">
-                                <h6>Roma</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lazio</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Roma")'>
+                                    <h6>Roma</h6>
+                                    <div>Lazio</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Milano</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lombardia</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Milano")'>
+                                    <h6>Milano</h6>
+                                    <div>Lombardia</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Firenze</h6>
-                                <a href="#!" style="color: #4f4f4f;">Toscana</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Firenze")'>
+                                    <h6>Firenze</h6>
+                                    <div>Toscana</div>
+                                </router-link>
                             </li>
-                            <li>
-                                <h6>Venezia</h6>
-                                <a href="#!" style="color: #4f4f4f;">Veneto</a>
+                            <li class="mb-3">
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Venezia")'>
+                                    <h6>Venezia</h6>
+                                    <div>Veneto</div>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4">
                         <ul class="list-unstyled mb-0 destinazione">
                             <li class="mb-3">
-                                <h6>Roma</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lazio</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Napoli")'>
+                                    <h6>Napoli</h6>
+                                    <div>Campania</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Milano</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lombardia</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Bari")'>
+                                    <h6>Bari</h6>
+                                    <div>Puglia</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Firenze</h6>
-                                <a href="#!" style="color: #4f4f4f;">Toscana</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Aquila")'>
+                                    <h6>L'Aquila</h6>
+                                    <div>Abruzzo</div>
+                                </router-link>
                             </li>
-                            <li>
-                                <h6>Venezia</h6>
-                                <a href="#!" style="color: #4f4f4f;">Veneto</a>
+                            <li class="mb-3">
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Torino")'>
+                                    <h6>Torino</h6>
+                                    <div>Piemonte</div>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4">
                         <ul class="list-unstyled mb-0 destinazione">
                             <li class="mb-3">
-                                <h6>Roma</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lazio</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Siena")'>
+                                    <h6>Siena</h6>
+                                    <div>Toscana</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Milano</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lombardia</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Verona")'>
+                                    <h6>Verona</h6>
+                                    <div>Veneto</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Firenze</h6>
-                                <a href="#!" style="color: #4f4f4f;">Toscana</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Cagliari")'>
+                                    <h6>Cagliari</h6>
+                                    <div>Sardegna</div>
+                                </router-link>
                             </li>
-                            <li>
-                                <h6>Venezia</h6>
-                                <a href="#!" style="color: #4f4f4f;">Veneto</a>
+                            <li class="mb-3">
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Ancona")'>
+                                    <h6>Ancona</h6>
+                                    <div>Marche</div>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <ul class="list-unstyled mb-0 destinazione">
                             <li class="mb-3">
-                                <h6>Roma</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lazio</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Trento")'>
+                                    <h6>Trento</h6>
+                                    <div>Trentino Alto Adige</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Milano</h6>
-                                <a href="#!" style="color: #4f4f4f;">Lombardia</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Potenza")'>
+                                    <h6>Potenza</h6>
+                                    <div>Basilicata</div>
+                                </router-link>
                             </li>
                             <li class="mb-3">
-                                <h6>Firenze</h6>
-                                <a href="#!" style="color: #4f4f4f;">Toscana</a>
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Trieste")'>
+                                    <h6>Trieste</h6>
+                                    <div>Friuli Venezia Giulia</div>
+                                </router-link>
                             </li>
-                            <li>
-                                <h6>Venezia</h6>
-                                <a href="#!" style="color: #4f4f4f;">Veneto</a>
+                            <li class="mb-3">
+                                <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Siracusa")'>
+                                    <h6>Siracusa</h6>
+                                    <div>Sicilia</div>
+                                </router-link>
                             </li>
                         </ul>
                     </div>
@@ -133,10 +166,12 @@
 
 <script>
 import axios from "axios";
+import {store} from "../store"
 
 export default {
     data() {
         return {
+            store,
             paletteColor: [
                 "#0FA3B1",
                 "#B5E2FA",
@@ -150,6 +185,11 @@ export default {
         this.fetchSponsorized()
     },
     methods: {
+        saveCity(city){
+            this.store.city=city;
+
+
+        },
         scrollSidebar() {
             const sliderHTML = document.querySelector(".slider");
 
