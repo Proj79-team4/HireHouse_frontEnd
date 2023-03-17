@@ -4,24 +4,28 @@
 
             <!-- consigliati -->
             <h2 class="pb-3">I nostri consigliati</h2>
-            <div class="row row-cols-1 row-cols-md-4 gy-3">
+            <div class="row row-cols-1 row-cols-md-4 gy-3  flex-nowrap overflow-auto slider pb-1"
+                @mouseover="scrollSidebar()">
                 <div class="col" v-for="apartment in this.apartmentsSponsorized">
-                    <router-link :to="{name: 'apartments.show', params: {id:apartment.id}}" class="text-decoration-none text-dark">
+                    <router-link :to="{ name: 'apartments.show', params: { id: apartment.id } }"
+                        class="text-decoration-none text-dark">
                         <div class="card p-0 positision-relative h-100" style="">
 
                             <!-- Inserire come primo parametro il proprio URL del BackEnd ! -->
-                            <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img " class="card-img-top h-50" alt="...">
-                            <div class="position-absolute top-0 pt-2 ps-1 translate-middle" v-if="apartment.sponsors.length > 0">
+                            <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img"
+                                class="card-img-top h-50" alt="...">
+                            <div class="position-absolute top-0 pt-2 ps-1 translate-middle"
+                                v-if="apartment.sponsors.length > 0">
                                 <i class="fa-solid fa-star p-1 star"></i>
                             </div>
 
                             <div class="card-body" :style="{ 'background-color': randomColor() }">
-                                <h5 class="card-title">{{apartment.title}}</h5>
-                                <div class="card-subtitle">{{apartment.full_address}}</div>
-                                <p class="card-text text-end pt-5">€{{apartment.price}} /notte</p>
+                                <h5 class="card-title">{{ apartment.title }}</h5>
+                                <div class="card-subtitle">{{ apartment.full_address }}</div>
+                                <p class="card-text text-end pt-5">€{{ apartment.price }} /notte</p>
                             </div>
                         </div>
-                    </router-link >
+                    </router-link>
                 </div>
             </div>
 
@@ -128,7 +132,7 @@
 </template>
 
 <script>
-import axios from "axios"; 
+import axios from "axios";
 
 export default {
     data() {
@@ -139,13 +143,22 @@ export default {
                 "#EDDEA4",
                 "#F7A072"
             ],
-            apartmentsSponsorized:[]
+            apartmentsSponsorized: []
         }
     },
     beforeMount() {
         this.fetchSponsorized()
     },
     methods: {
+        scrollSidebar() {
+            const sliderHTML = document.querySelector(".slider");
+
+            sliderHTML.addEventListener("wheel", (evt) => {
+                evt.preventDefault();
+                sliderHTML.scrollLeft += evt.deltaY;
+            });
+
+        },
         getRandomItem(arr) {
             // get random index value
             const randomIndex = Math.floor(Math.random() * arr.length);
@@ -161,9 +174,9 @@ export default {
         },
 
         // Funzione che recupera la lista di appartamenti sponsorizzati
-        fetchSponsorized(){
+        fetchSponsorized() {
             axios.get("http://127.0.0.1:8000/api/apartments/sponsorized")
-                .then((respone)=>{
+                .then((respone) => {
                     this.apartmentsSponsorized = respone.data;
                 })
         }
@@ -172,6 +185,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #F7A072;
+    border-radius: 5px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ca6b37 !important;
+}
+
 .host-image {
     height: 700px;
 
@@ -191,20 +232,20 @@ export default {
 }
 
 .destinazione {
-    li a{
+    li a {
         text-decoration: none;
         padding-bottom: 1rem;
     }
 
-    li h6{
+    li h6 {
         padding: 0;
         margin: 0;
     }
 
 }
-.star{
-    color:#ee722f;
+
+.star {
+    color: #ee722f;
     font-size: 25px;
-    
-}
-</style>
+
+}</style>
