@@ -69,12 +69,20 @@
                     </div>
                 </section>
             </div>
-
+            
             <!-- form messaggi -->
             <div class="col-12 col-lg-4 py-4">
                 <div class="shadow p-3 rounded-4">
                     <h5 class="text-center py-3">€{{ apartment.price }} /notte</h5>
-                    <form action="" method="" @submit.prevent="createMessage()">
+
+                    <div v-if="formSubmit === true" class="rounded-4 d-flex flex-column message-success mx-4">
+                        <div class="text-center py-4">
+                            <i class="fa-solid fa-envelope-circle-check icon text-success"></i>
+                        </div>
+                        <div class="text-success text-center pb-4 h4">Messaggio inviato correttamente</div>
+                    </div>
+
+                    <form action="" method="" @submit.prevent="createMessage()" :class="formSubmit === true ? 'd-none' : 'd-block'">
                         <div class="pt-2 px-3 border rounded-top">
                             <label for="exampleFormControlInput1" class="fw-bold"><small>NOME</small></label>
                             <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"
@@ -94,12 +102,10 @@
 
 
                         <div class="d-flex align-items-center gap-2">
-                            <button class="btn my-btn-orange d-block" type="submit">Invia</button>
-                            <span class="text-success" v-if="formSubmit === true" >Messaggio inviato correttamente</span>
-
-                        </div>
-
+                            <button class="btn my-btn-orange d-block w-100 rounded-4" type="submit">Invia</button>
+                        </div>    
                     </form>
+
                 </div>
             </div>
         </div>
@@ -156,11 +162,7 @@ export default {
                         apartment_id: null
 
                     }
-                    setTimeout(()=>{ this.formSubmit=false }, 2000);
-
-
-
-
+                    setTimeout(()=>{ this.formSubmit=false }, 5000);
 
                 }).catch((e) => {
 
@@ -217,6 +219,13 @@ form {
             outline: 0;
             box-shadow: 0 0 0 0;
         }
+    }
+}
+
+.message-success{
+    background-color: #C7E8CA;
+    div .icon{
+        font-size: 5rem;
     }
 }
 </style>

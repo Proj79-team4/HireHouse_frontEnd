@@ -8,7 +8,7 @@
             <div class="pt-2">
                 <a href="http://127.0.0.1:8000/" class="text-white nav-link">   
                     Diventa un Host
-                    <i class="fa-solid fa-globe ms-3"></i>
+                    <i class="fa-solid fa-globe ms-1"></i>
                 </a>
             </div>
         </div>

@@ -7,8 +7,8 @@
 
             <div class="pt-2">
                 <router-link :to="{name:'home'}" class="nav-link">
-                    Torna alla Home
-                    <i class="fa-solid fa-house ms-2"></i>
+                    HOME
+                    <i class="fa-solid fa-house"></i>
                 </router-link>
             </div>
         </div>

@@ -18,7 +18,7 @@
                             <div class="card-body" :style="{ 'background-color': randomColor() }">
                                 <h5 class="card-title">{{apartment.title}}</h5>
                                 <div class="card-subtitle">{{apartment.full_address}}</div>
-                                <p class="card-text text-end pt-5">€{{apartment.price}} notte</p>
+                                <p class="card-text text-end pt-5">€{{apartment.price}} /notte</p>
                             </div>
                         </div>
                     </router-link >
