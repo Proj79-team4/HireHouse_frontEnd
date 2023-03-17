@@ -61,7 +61,7 @@
             <div class="col-6 col-md-3">
                 <div class="input-group searchbar py-2 px-3 rounded-5 shadow d-flex flex-column justify-content-center">
                     <label for="distanceInput" class="flex-fill"><small>Distanza: <output id="value">{{ form.dist }} km</output></small></label>
-                    <input id="distanceInput" type="range" min="0" max="500" step="5" class="form-range w-100" v-model="form.dist"/>
+                    <input id="distanceInput" type="range" min="0" max="30" step="5" class="form-range w-100" v-model="form.dist"/>
                 </div>
             </div>
 
@@ -124,6 +124,7 @@ export default {
     mounted(){
         if(this.address != ""){
             this.fetchApartments();
+            store.city="";
         }
     },
     beforeMount(){
