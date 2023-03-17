@@ -4,7 +4,7 @@
             <!-- searchbar -->
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                    <div class="input-group mb-3 searchbar px-3 py-2 rounded-5 align-items-center">
+                    <div class="input-group mb-3 searchbar px-3 py-2 rounded-5 align-items-center ">
                         <div class="d-flex flex-column flex-fill px-2">
                             <h6 class="mb-0"><small>Localitá</small></h6>
                             <input type="text" class="form-control input-text" placeholder="Inserisci la tua prossima meta"
@@ -81,8 +81,14 @@ export default {
 <style scoped lang="scss">
 @use '../styles/partials/variables';
 
+
+
 .searchbar {
     width: 70%;
+    @media screen and (max-width:767px) {
+        width:100%;
+        
+    }
     background-color: white;
 
     .form-control {
