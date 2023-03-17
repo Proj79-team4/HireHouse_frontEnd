@@ -113,8 +113,16 @@ export default {
     left: 50%;
     color: white;
     font-weight: 800;
+    @media screen and (max-width:767px) {
+        top: 50%;
+    }
+    
 
     h1 {
         font-size: 50px;
+        @media screen and (max-width:767px) {
+            font-size: 3vh;
+        
+    }
     }
 }</style>
