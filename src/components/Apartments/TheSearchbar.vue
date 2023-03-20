@@ -6,7 +6,7 @@
                     class="input-group searchbar py-2 px-3 rounded-5 align-items-center shadow d-flex justify-content-between">
                     <div class="px-2">
                         <input type="text" class="form-control input-text" placeholder="Cittá"
-                            aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="address">
+                            aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="this.store.city">
                     </div>
                     <!-- <button class="btn my-btn-orange rounded-circle" type="button"><i class="fa fa-search"></i></button> -->
                 </div>
@@ -137,7 +137,7 @@ export default {
             
             store,
             services: [],
-            address: store.city,
+            
             form: {
                 price: "",
                 num_rooms: "",
@@ -154,9 +154,9 @@ export default {
         }
     },
     mounted() {
-        if (this.address != "") {
+        if (store.city != "") {
             this.fetchApartments();
-            store.city = "";
+            
         }
     },
     beforeMount() {
@@ -173,9 +173,9 @@ export default {
             store.showIndexPaginate=false;
             store.showResearchPaginate=true;
             //entriamo qui quando abbiamo un luogo per recuperare lat e long
-            if (this.address !== "") {
+            if (store.city !== "") {
 
-                axios.get("https://api.tomtom.com/search/2/geocode/" + this.address + ".json?key=6hakT8QU7IRSx9PCHGi5JyHTV2S7xWlD")
+                axios.get("https://api.tomtom.com/search/2/geocode/" + store.city+ ".json?key=6hakT8QU7IRSx9PCHGi5JyHTV2S7xWlD")
                     .then((resp) => {
                         this.form.lat = resp.data.results[0].position.lat
                         this.form.lng = resp.data.results[0].position.lon
@@ -200,6 +200,8 @@ export default {
             //entriamo qui quando non abbiamo un luogo per recuperare lat e long
             
             else {
+                this.form.lat="";
+                this.form.lng="";
                 
                 axios.get("http://127.0.0.1:8000/api/apartments/research", { params:{...this.form , page: store.currentPage} })
                     .then((resp) => {
