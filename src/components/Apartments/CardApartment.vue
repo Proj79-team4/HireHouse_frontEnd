@@ -4,11 +4,13 @@
             <div class="card rounded-4" >
                 <div class="row no-gutters py-3 border-top">
                     <div class="col-12 col-sm-5 position-relative">
-                        <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img"
-                            class="img-fluid h-100 w-100 rounded-4" alt="">
-                            <div class="position-absolute top-0 pt-2 ps-1 translate-middle" v-if="apartment.sponsors.length > 0">
-                                <i class="fa-solid fa-star p-1 star"></i>
-                            </div>
+                        <div class="img-container">
+                            <img :src="'http://127.0.0.1:8000/' + 'storage/' + apartment.cover_img"
+                                class="img-fluid h-100 w-100 rounded-4" alt="">
+                        </div>
+                        <div class="position-absolute top-0 pt-2 ps-1 translate-middle" v-if="apartment.sponsors.length > 0">
+                            <i class="fa-solid fa-star p-1 star"></i>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="card-block pt-2">
@@ -22,7 +24,7 @@
                                 <span v-for="(service, i) in apartment.services " :key="i" class="text-dark p-2"><i
                                         :class="'fa-solid ' + service.icon"></i></span>
                             </div>
-                            <div class="text-dark text-end pt-3"><strong>€ {{ apartment.price }}</strong> /notte</div>
+                            <div class="text-dark text-end pt-5"><strong>€ {{ apartment.price }}</strong> /notte</div>
         
                         </div>
                     </div>
@@ -60,6 +62,14 @@ export default {
     color:#ee722f;
     font-size: 25px;
     
+}
+
+.img-container{
+    height: 250px;
+
+    img {
+        object-fit: cover;
+    }
 }
 
 </style>

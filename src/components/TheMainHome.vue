@@ -46,7 +46,7 @@
 
                 
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-6 col-lg-3">
                         <ul class="list-unstyled  mb-0 destinazione">
                             <li class="mb-3">
                                 <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Roma")'>
@@ -74,7 +74,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="col-6 col-lg-3 mb-4">
                         <ul class="list-unstyled mb-0 destinazione">
                             <li class="mb-3">
                                 <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Napoli")'>
@@ -102,7 +102,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="col-6 col-lg-3 mb-4">
                         <ul class="list-unstyled mb-0 destinazione">
                             <li class="mb-3">
                                 <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Siena")'>
@@ -130,7 +130,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-6 col-lg-3">
                         <ul class="list-unstyled mb-0 destinazione">
                             <li class="mb-3">
                                 <router-link class="text-black" :to="{name: 'apartments.index' }" @click='saveCity("Trento")'>
